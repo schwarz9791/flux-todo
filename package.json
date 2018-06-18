@@ -5,14 +5,16 @@
   "repository": "git@github.com:schwarz9791/flux-todo.git",
   "scripts": {
     "start": "webpack-dev-server --mode development",
-    "build": "webpack -mode production"
+    "build": "webpack --mode production"
   },
   "author": "schwarz9791",
   "license": "MIT",
   "dependencies": {
+    "moment-timezone": "^0.5.17",
     "prop-types": "^15.6.1",
     "react": "^16.4.0",
     "react-dom": "^16.4.0",
+    "react-moment": "^0.7.6",
     "react-router": "^4.3.1",
     "react-router-dom": "^4.3.1"
   },

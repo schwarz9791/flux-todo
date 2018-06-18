@@ -7,6 +7,10 @@ export default class ActionCreator {
     this.dispatcher.emit('addTodo', text);
   }
 
+  updateTodo(id, text) {
+    this.dispatcher.emit('updateTodo', id, text);
+  }
+
   deleteTodo(id) {
     this.dispatcher.emit('deleteTodo', id);
   }

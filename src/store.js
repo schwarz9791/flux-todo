@@ -3,10 +3,12 @@ import { EventEmitter } from 'events';
 export default class Store extends EventEmitter {
   constructor(dispatcher) {
     super();
+    const todos = JSON.parse(sessionStorage.getItem('todos'));
     this.state = {
-      todos: []
+      todos: todos || []
     }
     dispatcher.on('addTodo', this.onAddTodo.bind(this));
+    dispatcher.on('updateTodo', this.onUpdateTodo.bind(this));
     dispatcher.on('deleteTodo', this.onDeleteTodo.bind(this));
     dispatcher.on('completeTodo', this.onCompleteTodo.bind(this));
   }
@@ -21,6 +23,16 @@ export default class Store extends EventEmitter {
       complete: false,
       text
     }];
+    this.emit('CHANGE');
+  }
+
+  onUpdateTodo(id, text) {
+    this.state.todos = this.state.todos.map(todo => {
+      if (todo.id === id) {
+        todo.text = text;
+      }
+      return todo;
+    });
     this.emit('CHANGE');
   }
 
