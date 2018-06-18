@@ -1,6 +1,6 @@
 import React from 'react';
 import { render } from 'react-dom';
-import { BrowserRouter as Router, Route, Switch, Link, withRouter } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
 
 import App from './App';
 
@@ -10,7 +10,8 @@ document.body.appendChild(rootEl);
 render((
   <Router>
     <Switch>
-      <Route path='/' component={App} />
+      <Route path='/todos' component={App} />
+      <Redirect exact from='/' to='/todos' />
     </Switch>
   </Router>
 ), rootEl);
